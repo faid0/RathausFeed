@@ -4,7 +4,13 @@ const useArticleSelection = (items) => {
 	const articlesByKey = useMemo(() => {
 		const map = {};
 		items.forEach((item) => {
-			map[item.key] = { key: item.key, image: item.image, ...item.article };
+			const hashtags = item.article?.hashtags || item.hashtags || [];
+			map[item.key] = {
+				key: item.key,
+				image: item.image,
+				...item.article,
+				hashtags,
+			};
 		});
 		return map;
 	}, [items]);
@@ -19,7 +25,7 @@ const useArticleSelection = (items) => {
 				image: item.image,
 				comments: item.feed.comments,
 				articleKey: item.key,
-				hashtags: item.article.hashtags || [],
+				hashtags: item.article?.hashtags || item.hashtags || [],
 			})),
 		[items]
 	);
