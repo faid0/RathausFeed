@@ -58,9 +58,6 @@ Setup overview for the backend (Node/TypeScript), frontend (React), and AI helpe
 - Prerequisites: not existing rn.
 - Install requirements:
   ```sh
-  pip install -r requirements.txt
-  ```
-- Start the server:
-  ```sh
-  uvicorn ai-service:app --host 127.0.0.1 --port 5000 --reload
+  cd ai_service
+  pip install -e .
   ```
