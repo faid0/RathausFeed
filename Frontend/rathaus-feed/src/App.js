@@ -5,8 +5,13 @@ import Feed from "./feed/feed.js";
 import ArticleView from "./article/ArticleView";
 import PhoneFrame from "./components/PhoneFrame";
 import useArticleSelection from "./hooks/useArticleSelection";
+import fallbackContent from "./content.json";
+import { withPublicPath } from "./utils/publicPath";
 
-const PLACEHOLDER_IMAGE = "/placeholder_image.png";
+const CONTENTS_URL = withPublicPath("contents.json");
+const PLACEHOLDER_IMAGE = withPublicPath("placeholder_image.png");
+const COVER_IMAGE = withPublicPath("cover_image.png");
+const SOURCES_IMAGE = withPublicPath("Sources.png");
 const FEED_SLIDE_INDEX = 2; // 0-based index: slide 3 of 4
 const MOCK_HASHTAG_SETS = [
   ["#housing", "#budget", "#munich"],
@@ -73,7 +78,7 @@ function normalizeImageSource(raw) {
     return trimmed;
   }
 
-  if (/^https?:\/\//i.test(trimmed) || trimmed.startsWith("/")) {
+  if (/^https?:\/\//i.test(trimmed)) {
     return trimmed;
   }
 
@@ -82,7 +87,56 @@ function normalizeImageSource(raw) {
     return `data:image/png;base64,${base64Candidate}`;
   }
 
-  return PLACEHOLDER_IMAGE;
+  if (trimmed.startsWith("/")) {
+    return withPublicPath(trimmed);
+  }
+
+  return withPublicPath(trimmed);
+}
+
+function mapBackendPosts(rawPosts) {
+  if (!Array.isArray(rawPosts)) return [];
+
+  return rawPosts.map((post, index) => {
+    const backendFeed = post.feed || {};
+    const backendArticle = post.article || {};
+    const fallbackKey = post.id != null ? post.id.toString() : `post-${index}`;
+    const key = post.key || fallbackKey;
+    const hashtags = normalizeHashtags(post.hashtags || backendArticle.hashtags, key);
+    const rawImage = post.image || backendArticle.image || backendFeed.image;
+    const image = normalizeImageSource(rawImage);
+    const articleImage = backendArticle.image
+      ? normalizeImageSource(backendArticle.image)
+      : image;
+
+    return {
+      id: post.id ?? index,
+      key,
+      hashtags,
+      image,
+      feed: {
+        name: backendFeed.name || post.title || "Unbenannt",
+        time: backendFeed.time || post.createdAt || "",
+        text: backendFeed.text || post.summary || "",
+        comments: backendFeed.comments ?? 0,
+      },
+      article: {
+        title: backendArticle.title || post.title || "Unbenannt",
+        time: backendArticle.time || backendFeed.time || post.createdAt || "",
+        lede: backendArticle.lede || post.summary || "",
+        image: articleImage,
+        kidsSummary:
+          backendArticle.kidsSummary || backendArticle.kids_summary || post.kids_summary ||
+          "Not available yet.",
+        hashtags,
+        glossary: backendArticle.glossary || [],
+        body:
+          backendArticle.body && backendArticle.body.length
+            ? backendArticle.body
+            : [post.content || post.summary || ""],
+      },
+    };
+  });
 }
 
 function LeftScreen({
@@ -107,22 +161,12 @@ function LeftScreen({
   );
 }
 
-function PlaceholderSlide({ label, title, description }) {
-  return (
-    <div className="placeholder-card">
-      <p className="placeholder-kicker">{label}</p>
-      <h2 className="placeholder-title">{title}</h2>
-      <p className="placeholder-copy">{description}</p>
-    </div>
-  );
-}
-
 function IntroSlide() {
   return (
     <div className="intro-hero">
       <img
         className="intro-image"
-        src="/cover_image.png"
+        src={COVER_IMAGE}
         alt="Cover"
       />
       <div className="intro-tag">#RathausFeed</div>
@@ -136,7 +180,7 @@ function IntroSlide() {
 function StorySlide() {
   return (
     <div className="story-stage" aria-label="Story slide content area">
-      <img className="story-image" src="/Sources.png" alt="Sources" />
+      <img className="story-image" src={SOURCES_IMAGE} alt="Sources" />
     </div>
   );
 }
@@ -191,56 +235,31 @@ export default function App() {
   const navigateRef = useRef(() => {});
 
   useEffect(() => {
-    fetch("http://localhost:8000/posts")
-      .then((res) => res.json())
-      .then((backendPosts) => {
-        console.log("Fetched posts:", backendPosts);
-        const mappedData = backendPosts.map((post, index) => {
-          const backendFeed = post.feed || {};
-          const backendArticle = post.article || {};
-          const fallbackKey = post.id != null ? post.id.toString() : `post-${index}`;
-          const key = post.key || fallbackKey;
-          const hashtags = normalizeHashtags(
-            post.hashtags || backendArticle.hashtags,
-            key
-          );
-          const rawImage = post.image || backendArticle.image || backendFeed.image;
-          const image = normalizeImageSource(rawImage);
-          const articleImage = backendArticle.image
-            ? normalizeImageSource(backendArticle.image)
-            : image;
+    let isMounted = true;
 
-          return {
-            id: post.id,
-            key,
-            hashtags,
-            image,
-            feed: {
-              name: backendFeed.name || post.title || "Unbenannt",
-              time: backendFeed.time || post.createdAt,
-              text: backendFeed.text || post.summary || "",
-              comments: backendFeed.comments ?? 0,
-            },
-            article: {
-              title: backendArticle.title || post.title || "Unbenannt",
-              time: backendArticle.time || backendFeed.time || post.createdAt,
-              lede: backendArticle.lede || post.summary || "",
-              image: articleImage,
-              kidsSummary:
-                backendArticle.kidsSummary || backendArticle.kids_summary || post.kids_summary ||
-                "Not available yet.",
-              hashtags,
-              glossary: backendArticle.glossary || [],
-              body:
-                backendArticle.body && backendArticle.body.length
-                  ? backendArticle.body
-                  : [post.content || post.summary || ""],
-            },
-          };
-        });
-        setData(mappedData);
-      })
-      .catch((err) => console.error("Failed to fetch posts:", err));
+    const loadPosts = async () => {
+      try {
+        const response = await fetch(CONTENTS_URL, { cache: "no-cache" });
+        if (!response.ok) {
+          throw new Error(`Failed to fetch contents.json (${response.status})`);
+        }
+        const backendPosts = await response.json();
+        if (isMounted) {
+          setData(mapBackendPosts(backendPosts));
+        }
+      } catch (err) {
+        console.error("Failed to load contents.json, falling back to bundled data:", err);
+        if (isMounted) {
+          setData(mapBackendPosts(fallbackContent));
+        }
+      }
+    };
+
+    loadPosts();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const {

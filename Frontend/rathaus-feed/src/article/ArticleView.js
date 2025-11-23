@@ -2,14 +2,15 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "./article.css";
 import { TAG_COLORS, colorIndexForTag } from "../utils/tagColors";
+import { withPublicPath } from "../utils/publicPath";
 
 const ArticleView = ({ article }) => {
-	const glossary = article?.glossary || [];
+	const glossary = useMemo(() => article?.glossary || [], [article]);
 	const viewRef = useRef(null);
 	const [screenEl, setScreenEl] = useState(null);
 	const [overlayHost, setOverlayHost] = useState(null);
 	const [activeTerm, setActiveTerm] = useState(null);
-	const kidsImagePath = "/lil_journalist.png";
+	const kidsImagePath = withPublicPath("lil_journalist.png");
 
 	const termRegex = useMemo(() => {
 		if (!glossary.length) return null;
