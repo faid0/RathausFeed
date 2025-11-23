@@ -17,7 +17,7 @@ The Rathaus publishes numerous official announcements specifying regulatory proc
 
 ## Our Solution
 
-We built a full-stack application that ingests official documents from the Rathaus, uses AI to translate them into plain language summaries, and presents them in a user-friendly interface where citizens can easily browse, search, and discuss local government activities.
+**A full-stack application over a ingestion pipeline that scrapes official documents from the Rathaus, uses AI to curate and generate an optimal feed, and presents them in a user-friendly interface where citizens can easily browse, search, and discuss local government activities.**
 
 - 🧾 **Summarised updates** on what the city is planning, deciding, or debating
 - 🏷️ **Tags & filters** (e.g. “mobility”, “housing”, “climate”, “kids & youth”) to find what actually matters to them
