@@ -2,6 +2,8 @@
 
 Built at **HackaTUM 2025** for the **City of Munich / IT-Referat** challenge.
 
+Try the [live proof of concept](https://faid0.github.io/RathausFeed/).
+
 **We translate City Hall's Amtsdeutsch into a digital participatory noticeboard for the average citizen.**
 
 The Rathaus publishes numerous official announcements specifying regulatory proceedings, including:
