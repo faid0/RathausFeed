@@ -64,7 +64,3 @@ Setup overview for the backend (Node/TypeScript), frontend (React), and AI helpe
   ```sh
   uvicorn ai-service:app --host 127.0.0.1 --port 5000 --reload
   ```
-
-### Recommended Tools
-- Postman for API testing
-- Sqlite Viewer to check the database
