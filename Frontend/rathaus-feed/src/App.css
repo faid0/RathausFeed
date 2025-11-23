@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
+
+.page-root {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #292929;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+.phones-wrapper {
+  display: flex;
+  gap: 10rem;
+  padding: 2rem;
+}
+
+.phone-frame {
+  --frame-padding: 12px;
+  width: 375px;  /* Phone width */
+  height: 750px; /* Phone height */
+  border-radius: 32px;
+  background: #000;
+  padding: var(--frame-padding);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.phone-frame--highlight {
+  box-shadow:
+    0 0 0 6px #2563eb,
+    0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.phone-frame--press {
+  box-shadow:
+    0 0 0 6px #1d4ed8,
+    0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.phone-notch {
+  width: 140px;
+  height: 24px;
+  background: #000;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  background: #f3f4f6;
+  border-radius: 24px;
+  overflow-y: auto;
+  padding-top: 0;
+  box-sizing: border-box;
+  position: relative;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.phone-screen.is-locked {
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+.phone-screen::-webkit-scrollbar {
+  display: none;
+}
+
+.screen-content h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.screen-content p {
+  margin: 0.5rem 0;
+}
+
+.hover-line {
+  position: absolute;
+  height: 7px;
+  background: #2563eb;
+  transform-origin: 0 50%;
+  pointer-events: none;
+  border-radius: 999px;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}

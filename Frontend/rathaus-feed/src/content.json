@@ -1,0 +1,99 @@
+[
+  {
+    "id": 1,
+    "key": "ordinance-renter-protection",
+    "feed": {
+      "name": "Council Docket 2024-118",
+      "time": "Today",
+      "text": "Draft ordinance to expand renter protections near Ostbahnhof. Legal review completed; public comment window closes Friday at noon.",
+      "comments": 12
+    },
+    "article": {
+      "title": "Ordinance: Expanded Renter Protections near Ostbahnhof",
+      "time": "Today · Legal Affairs Committee",
+      "lede": "Council members advanced a package to strengthen notice requirements and mediation access for tenants in redevelopment zones.",
+      "kidsSummary": "The city wants landlords to give renters more warning before asking them to leave and to offer a calm meeting to solve problems first. They will try this for six months and see if it helps families stay in their homes.",
+      "hashtags": ["#housing", "#tenant-rights", "#ostbahnhof", "#renter-safety"],
+      "glossary": [
+        {
+          "term": "notice requirements",
+          "description": "How far in advance a landlord must tell a tenant about an eviction or contract change before it takes effect."
+        },
+        {
+          "term": "mediation",
+          "description": "A meeting with a neutral third party who helps both sides try to agree before going to court."
+        }
+      ],
+      "body": [
+        "The draft ordinance would require landlords in the Ostbahnhof corridor to provide 120 days' notice for no-fault terminations during redevelopment and to offer city-funded mediation prior to any eviction filings.",
+        "Legal review confirms compatibility with Bavarian housing statutes. The proposal includes a six-month pilot followed by mandatory reporting on eviction trends and housing stability.",
+        "Public comment remains open until Friday at 12:00. If adopted, enforcement would begin in Q1 2025 with a dedicated tenant liaison office."
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "key": "budget-climate-retrofits",
+    "image": "/placeholder_image.png",
+    "feed": {
+      "name": "Budget Amendment: Climate Retrofits",
+      "time": "Yesterday",
+      "text": "Finance committee approved reallocation of EUR 4.2M for school insulation and solar roofs. Final vote scheduled for next plenary session.",
+      "comments": 34
+    },
+    "article": {
+      "title": "Budget Amendment: School Climate Retrofits",
+      "time": "Yesterday · Finance Committee",
+      "lede": "An amendment reallocating EUR 4.2M toward insulation, window upgrades, and rooftop solar at eight municipal schools cleared committee.",
+      "kidsSummary": "The city plans to use saved tech money to make schools warmer, quieter, and brighter with better windows, insulation, and solar panels. This should save energy and help kids learn in comfy classrooms.",
+      "hashtags": ["#climate", "#schools", "#retrofit", "#solar", "#budget"],
+      "glossary": [
+        {
+          "term": "reallocating",
+          "description": "Moving money from one budget line to another without increasing the total spending."
+        },
+        {
+          "term": "photovoltaic",
+          "description": "Technology that turns sunlight directly into electricity using solar panels."
+        }
+      ],
+      "body": [
+        "The package shifts underspent IT capital funds into the climate envelope, with a focus on buildings constructed between 1965–1985 that fail current energy standards.",
+        "Procurement will bundle insulation and photovoltaic workstreams to shorten construction windows over summer recess. The city expects a 22% reduction in heating demand at the targeted sites.",
+        "Final plenary vote is scheduled for next week. If approved, tender documents will be published within 30 days, with work commencing in April."
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "key": "zoning-riverfront-path",
+    "feed": {
+      "name": "Zoning Ruling: Riverfront Path",
+      "time": "2 days ago",
+      "text": "Administrative court cleared the city to proceed with the Isar riverfront bike path easement. Construction tender documents released for bidding.",
+      "comments": 18
+    },
+    "article": {
+      "title": "Zoning Ruling: Isar Riverfront Bike Path",
+      "time": "2 days ago · Administrative Court",
+      "lede": "The court upheld the city's easement for the Isar riverfront path, clearing the way for phased construction from Reichenbachbrücke to Deutsches Museum.",
+      "kidsSummary": "A court said the city can build a safe bike path next to the Isar River. Builders must keep space for walkers while they work, and the first stretch should be ready before the big festival traffic arrives.",
+      "hashtags": ["#mobility", "#isar", "#bikepath", "#accessibility"],
+      "glossary": [
+        {
+          "term": "easement",
+          "description": "A legal right to use someone else's land for a specific purpose, like a bike path."
+        },
+        {
+          "term": "tender documents",
+          "description": "The official paperwork contractors need to submit bids for a public project."
+        }
+      ],
+      "body": [
+        "Opponents had challenged the easement on grounds of heritage impacts; the ruling affirms the city's mitigation plan, which adds permeable surfaces and lighting cutoffs to protect riparian habitat.",
+        "The mobility department released tender documents for contractor bids, with a requirement to maintain pedestrian access during all phases.",
+        "Section one is slated for completion before Oktoberfest traffic peaks, with remaining segments finished by spring pending weather conditions."
+      ]
+    }
+  }
+]

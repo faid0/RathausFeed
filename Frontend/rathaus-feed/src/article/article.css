@@ -1,0 +1,334 @@
+.article-view {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 3rem 1.25rem 1.5rem;
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.article-meta {
+  font-size: 0.85rem;
+  color: #6b7280;
+  letter-spacing: 0.01em;
+}
+
+.article-title {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  font-weight: 600;
+  font-family: "Bebas Neue", "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-transform: uppercase;
+}
+
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.article-tag {
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.article-tag--c0 { background: #ffd166; color: #0f172a; } /* lighter amber */
+.article-tag--c1 { background: #ff9f6e; color: #0f172a; } /* softer blaze-orange */
+.article-tag--c2 { background: #ff7eb6; color: #0f172a; } /* soft neon-pink */
+.article-tag--c3 { background: #c3a3ff; color: #1f1f2e; } /* light blue-violet */
+.article-tag--c4 { background: #7cc8ff; color: #0f172a; } /* light azure-blue */
+.article-tag--c5 { background: #9bf6ff; color: #0f172a; } /* aqua */
+.article-tag--c6 { background: #caffbf; color: #0f172a; } /* mint */
+.article-tag--c7 { background: #fdffb6; color: #0f172a; } /* pale yellow */
+.article-tag--c8 { background: #ffd6a5; color: #0f172a; } /* peach */
+
+.article-term {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0 0.1rem;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.article-term.article-tag--c0 { color: #e0a200; } /* darker amber */
+.article-term.article-tag--c1 { color: #e07a4a; } /* richer orange */
+.article-term.article-tag--c2 { color: #d2578c; } /* deeper pink */
+.article-term.article-tag--c3 { color: #8b6ae6; } /* bolder violet */
+.article-term.article-tag--c4 { color: #2f8ecb; } /* stronger azure */
+.article-term.article-tag--c5 { color: #26a0b0; } /* deeper aqua */
+.article-term.article-tag--c6 { color: #7aad6b; } /* darker mint */
+.article-term.article-tag--c7 { color: #b3b743; } /* muted yellow */
+.article-term.article-tag--c8 { color: #d68a51; } /* warmer peach */
+
+.article-glossary-overlay {
+  position: absolute;
+  inset: var(--frame-padding, 0);
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 10;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.article-glossary-sheet {
+  width: 100%;
+  max-width: 420px;
+  max-height: 65%;
+  overflow-y: auto;
+  background: #ffffff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.12);
+  padding: 1rem 1.25rem 1.25rem;
+  animation: slideUp 180ms ease-out;
+}
+
+.article-glossary-handle {
+  width: 48px;
+  height: 5px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  margin: 0 auto 0.9rem;
+}
+
+.article-glossary-label {
+  font-size: 0.85rem;
+  color: #6b7280;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.article-glossary-title {
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  font-family: "Bebas Neue", "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.article-glossary-text {
+  margin: 0.6rem 0 1rem;
+  line-height: 1.5;
+  font-family: "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #111827;
+}
+
+.article-glossary-close {
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 0.5rem 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+}
+
+.article-kids-card {
+  --kids-bg: #fff3d1;
+  --kids-border: #ffe59a;
+  --kids-accent: #fbbf24;
+  --kids-pill-bg: rgba(245, 158, 11, 0.15);
+  --kids-shadow: rgba(251, 191, 36, 0.22);
+  --kids-text: #1f2937;
+  margin-top: 1.25rem;
+  background: var(--kids-bg);
+  border: 1px solid var(--kids-border);
+  border-radius: 18px;
+  padding: 1rem 1rem 1rem 1.1rem;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.article-kids-card::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.article-kids-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--kids-pill-bg);
+  color: var(--kids-text);
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  width: fit-content;
+}
+
+.article-kids-title {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  font-family: "Bebas Neue", "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--kids-text);
+}
+
+.article-kids-text {
+  margin: 0.4rem 0 0;
+  line-height: 1.45;
+  color: var(--kids-text);
+  font-weight: 600;
+}
+
+.article-kids-image-slot {
+  float: right;
+  width: 140px;
+  height: 140px;
+  margin: 0 0 0.35rem 1rem;
+  shape-image-threshold: 0.4;
+  shape-margin: 12px;
+  border: none;
+  background: transparent;
+  display: block;
+  transform: translateY(-4px);
+}
+
+.article-kids-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.article-kids-card--c0 {
+  --kids-bg: #fff3d1;
+  --kids-border: #ffe59a;
+  --kids-accent: #f59e0b;
+  --kids-pill-bg: rgba(245, 158, 11, 0.16);
+  --kids-shadow: rgba(245, 158, 11, 0.22);
+}
+
+.article-kids-card--c1 {
+  --kids-bg: #ffe3d8;
+  --kids-border: #ffc7b0;
+  --kids-accent: #fb7b24;
+  --kids-pill-bg: rgba(251, 123, 36, 0.16);
+  --kids-shadow: rgba(251, 123, 36, 0.22);
+}
+
+.article-kids-card--c2 {
+  --kids-bg: #ffe5f3;
+  --kids-border: #ffc7e7;
+  --kids-accent: #ec4899;
+  --kids-pill-bg: rgba(236, 72, 153, 0.16);
+  --kids-shadow: rgba(236, 72, 153, 0.22);
+}
+
+.article-kids-card--c3 {
+  --kids-bg: #f1e9ff;
+  --kids-border: #d9c7ff;
+  --kids-accent: #8b5cf6;
+  --kids-pill-bg: rgba(139, 92, 246, 0.16);
+  --kids-shadow: rgba(139, 92, 246, 0.22);
+}
+
+.article-kids-card--c4 {
+  --kids-bg: #e3f4ff;
+  --kids-border: #c7e9ff;
+  --kids-accent: #0ea5e9;
+  --kids-pill-bg: rgba(14, 165, 233, 0.16);
+  --kids-shadow: rgba(14, 165, 233, 0.22);
+}
+
+.article-kids-card--c5 {
+  --kids-bg: #dcf9ff;
+  --kids-border: #b8f1ff;
+  --kids-accent: #06b6d4;
+  --kids-pill-bg: rgba(6, 182, 212, 0.16);
+  --kids-shadow: rgba(6, 182, 212, 0.22);
+}
+
+.article-kids-card--c6 {
+  --kids-bg: #e6ffe8;
+  --kids-border: #c8ffd1;
+  --kids-accent: #22c55e;
+  --kids-pill-bg: rgba(34, 197, 94, 0.16);
+  --kids-shadow: rgba(34, 197, 94, 0.22);
+}
+
+.article-kids-card--c7 {
+  --kids-bg: #fffadd;
+  --kids-border: #fff1a8;
+  --kids-accent: #eab308;
+  --kids-pill-bg: rgba(234, 179, 8, 0.16);
+  --kids-shadow: rgba(234, 179, 8, 0.22);
+}
+
+.article-kids-card--c8 {
+  --kids-bg: #ffeade;
+  --kids-border: #ffd5bf;
+  --kids-accent: #fb923c;
+  --kids-pill-bg: rgba(251, 146, 60, 0.16);
+  --kids-shadow: rgba(251, 146, 60, 0.22);
+}
+
+@media (max-width: 430px) {
+  .article-kids-image-slot {
+    float: none;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 0.6rem;
+    transform: none;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.article-kids-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.article-lede {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.article-body p {
+  margin: 0.4rem 0 0.25rem;
+  line-height: 1.5;
+  color: #111827;
+}
+
+.article-image-wrapper {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.article-image {
+  width: 100%;
+  display: block;
+  height: auto;
+}

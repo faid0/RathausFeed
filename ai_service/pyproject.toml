@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "muc_challenge_ai_service"
+version = "0.1.0"
+description = "AI Service module for Munich Summarizer"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "pydantic",
+    "pypdf",
+    "google-generativeai",
+    "python-dotenv",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["ai_service*"]
