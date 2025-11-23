@@ -1,58 +1,70 @@
-# muc-challange
+# RathausFeed
 
-## Backend
+Built at **HackaTUM 2025** for the **City of Munich / IT-Referat** challenge.
 
-### Setup
+**We translate City Hall's Amtsdeutsch into a digital participatory noticeboard for the average citizen.**
 
-#### 1. install npm
+The Rathaus publishes numerous official announcements specifying regulatory proceedings, including:
 
-Ubuntu:
+- Rats­Informations­System (RIS), which includes meeting schedules, agendas, proposals, voting results, official council decisions, etc.
+- Amtsblatt, the official gazette announcing new regulations, bylaws, statutes, etc.
+- The “Rathaus Umschau”, a weekly bulletin with summaries of council decisions, press releases from departments, etc.
+- Meeting transcripts and minutes from city council sessions.
 
-```sh
-# install nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+❗️ But these documents are often written in **complex legalese** and PDFs buried in government sites. We sense there is an important **lack of transparency** and participation in local governance, and we want to change that.
 
-# install npm version 22
-nvm install 22
-nvm use 22
-nvm alias default 22
-```
+## Our Solution
 
-#### 2. install packages
+We built a full-stack application that ingests official documents from the Rathaus, uses AI to translate them into plain language summaries, and presents them in a user-friendly interface where citizens can easily browse, search, and discuss local government activities.
 
-```sh
-npm install
-```
+- 🧾 **Summarised updates** on what the city is planning, deciding, or debating
+- 🏷️ **Tags & filters** (e.g. “mobility”, “housing”, “climate”, “kids & youth”) to find what actually matters to them
+- 💬 **Discussion threads** to voice opinions, ask questions, and engage with fellow citizens
+- 📚  A **children’s view** for use in schools and educational settings
+- 🗳️ To-do: pointers to **participation options** (petitions, consultations, surveys, events) whenever there’s a way to get involved  
 
-### Run Backend Service in Dev enviorement
+<img src="https://i.imgur.com/pUt66Ax.png" alt="RathausFeed Screenshot" width="600"/>
 
-```sh
-npm run dev
-```
 
-## Frontend
 
-## AI
 
-### Prerequisits
+## Set-up
+Setup overview for the backend (Node/TypeScript), frontend (React), and AI helper (Python).
 
-not existing rn
+### Backend
+- Requires npm/Node 22 (example with nvm on Ubuntu):
+  ```sh
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+  nvm install 22
+  nvm use 22
+  nvm alias default 22
+  ```
+- Install and run (from repo root):
+  ```sh
+  cd Backend
+  npm install
+  npm run dev
+  ```
 
-```sh
-pip install -r requirements.txt
-```
+### Frontend
+- Install and start:
+  ```sh
+  cd Frontend/rathaus-feed
+  npm install
+  npm start
+  ```
 
-### Start the Server
+### AI
+- Prerequisites: not existing rn.
+- Install requirements:
+  ```sh
+  pip install -r requirements.txt
+  ```
+- Start the server:
+  ```sh
+  uvicorn ai-service:app --host 127.0.0.1 --port 5000 --reload
+  ```
 
-```sh
-uvicorn ai-service:app --host 127.0.0.1 --port 5000 --reload
-```
-
-## Scraper
-
-## Recommended Tools
-
-- **Postman** for API testing
-- **Sqlite Viewer** to check the database
-
-## Pages
+### Recommended Tools
+- Postman for API testing
+- Sqlite Viewer to check the database
