@@ -11,7 +11,7 @@ The Rathaus publishes numerous official announcements specifying regulatory proc
 - The “Rathaus Umschau”, a weekly bulletin with summaries of council decisions, press releases from departments, etc.
 - Meeting transcripts and minutes from city council sessions.
 
-❗️ But these documents are often written in **complex legalese** and PDFs buried in government sites. We sense there is an important **lack of transparency** and participation in local governance, and we want to change that.
+❗️ But these documents are often written in **complex legalese** and PDFs buried in government sites. We sense there is an important lack of de facto transparency and participation in local governance, and we want to change that.
 
 ## Our Solution
 
